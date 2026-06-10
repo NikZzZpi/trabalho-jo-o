@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminário UFMG - Política Atual de Educação Especial</title>
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Paleta UFMG & McKinsey Style */
+            --primary-blue: #0f2b5b; /* Azul profundo acadêmico */
+            --accent-blue: #005099; /* Azul vibrante para destaque */
+            --light-gray: #f4f7f6; /* Fundo principal */
+            --white: #ffffff;
+            --text-dark: #2C3E50;
+            --text-gray: #596a7a;
+            --red-alert: #C0392B; /* Para os retrocessos/alertas */
+            --green-success: #27AE60; /* Para os avanços */
+            --ufmg-red: #c8102e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: var(--text-dark);
+        }
+
+        /* Container Principal Fixo em 16:9 */
+        #deck-container {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--light-gray);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            transform-origin: center center;
+        }
+
+        /* Estrutura dos Slides */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px 60px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--light-gray);
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        /* Tipografia Base BCG/McKinsey */
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-blue);
+        }
+
+        .action-title {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+            border-bottom: 3px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .action-title span {
+            display: block;
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--text-gray);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Top Tracker */
+        .top-tracker {
+            position: absolute;
+            top: 20px;
+            right: 60px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #b0bec5;
+            display: flex;
+            gap: 15px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+            z-index: 20;
+        }
+        .top-tracker span.active-track {
+            color: var(--accent-blue);
+            border-bottom: 2px solid var(--accent-blue);
+        }
+
+        /* Rodapé de Slide */
+        .slide-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            font-size: 13px;
+        }
+
+        .citation {
+            color: var(--text-gray);
+            font-style: italic;
+        }
+
+        .transition-hook {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Layouts Específicos --- */
+        
+        /* Capa */
+        .slide-cover {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .slide-cover h1 {
+            color: var(--white);
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .slide-cover h2 {
+            color: #d1e4f3;
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+        .cover-details {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 40px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .cover-details p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .ufmg-logo {
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        /* Layout Timeline (Slide 2) */
+        .timeline-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 50px;
+            position: relative;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 5%;
+            width: 90%;
+            height: 4px;
+            background: #ddd;
+            z-index: 1;
+        }
+        .timeline-step {
+            width: 30%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: 4px solid var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: var(--primary-blue);
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .timeline-step:nth-child(1) .timeline-icon { border-color: var(--red-alert); color: var(--red-alert); }
+        .timeline-step:nth-child(2) .timeline-icon { border-color: #F39C12; color: #F39C12; }
+        .timeline-step:nth-child(3) .timeline-icon { border-color: var(--green-success); color: var(--green-success); }
+        
+        .timeline-content {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .timeline-content h3 { font-size: 18px; margin-bottom: 10px; text-align: center; }
+        .timeline-content ul { list-style: none; font-size: 14px; }
+        .timeline-content li { margin-bottom: 8px; padding-left: 15px; position: relative; }
+        .timeline-content li::before { content: '▪'; position: absolute; left: 0; color: var(--accent-blue); }
+
+        /* Layout Tiles (Slide 3) */
+        .tiles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            height: 60%;
+            margin-top: 20px;
+        }
+        .tile {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            border-top: 5px solid var(--accent-blue);
+        }
+        .tile.assistencial { border-top-color: var(--text-gray); }
+        .tile.direito { border-top-color: var(--green-success); }
+        
+        .tile h3 { font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .tile ul { list-style: none; }
+        .tile li { font-size: 18px; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
+        .tile li i { margin-top: 5px; color: var(--accent-blue); }
+
+        /* Bullet Points Grandes (Slide 4, 5) */
+        .bullet-list-large {
+            list-style: none;
+            margin-top: 20px;
+            width: 80%;
+        }
+        .bullet-list-large li {
+            font-size: 22px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--white);
+            border-left: 6px solid var(--accent-blue);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .bullet-list-large li i {
+            font-size: 30px;
+            color: var(--primary-blue);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* Layout 3 Colunas PNEEPEI (Slide 6) */
+        .col-3-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .card i {
+            font-size: 40px;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        .card h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+        .card p {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        /* Layout Desafios Complexo (Slide 7) */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            height: 70%;
+        }
+        .dash-side {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .stat-box {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .stat-box.avanco { border-left-color: var(--green-success); }
+        .stat-box.ameaca { border-left-color: var(--red-alert); }
+        .stat-box i { font-size: 24px; }
+        
+        .dash-main {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .dash-main h3 { font-size: 22px; margin-bottom: 20px; color: var(--red-alert); }
+        .dash-list { list-style: none; }
+        .dash-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 16px;
+        }
+        .dash-list li::before {
+            content: '\f071'; /* alert icon */
+            font-family: 'FontAwesome';
+            position: absolute;
+            left: 0;
+            color: var(--red-alert);
+        }
+
+        /* Comparativo Jurídico (Slide 8) */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .comparison-table th {
+            background: var(--primary-blue);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table td:first-child { font-weight: 700; color: var(--primary-blue); width: 20%; }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .tag.base { background: #e3f2fd; color: #1565c0; }
+        .tag.retro { background: #ffebee; color: #c62828; }
+        .tag.nova { background: #e8f5e9; color: #2e7d32; }
+
+        /* Conclusão e Perguntas (Slide 11) */
+        .conclusion-box {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        .conclusion-box strong { font-weight: 700; color: #90caf9; }
+        
+        .questions-container {
+            display: flex;
+            gap: 30px;
+        }
+        .question-card {
+            flex: 1;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--red-alert);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .question-card i { font-size: 30px; color: var(--red-alert); margin-bottom: 15px; }
+        .question-card h4 { font-size: 20px; color: var(--text-dark); line-height: 1.4; }
+
+        /* Referências (Slide 12) */
+        .abnt-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        .abnt-list li {
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            text-indent: -40px;
+            line-height: 1.5;
+        }
+
+        /* Controles Globais de Navegação Visível */
+        .nav-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 50%;
+            transform: translateX(50%);
+            display: flex;
+            gap: 10px;
+            z-index: 50;
+        }
+        .nav-btn {
+            background: rgba(0,0,0,0.1);
+            border: none;
+            color: var(--primary-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+        .slide-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-size: 14px;
+            color: var(--text-gray);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            z-index: 50;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="deck-container">
+        
+        <!-- ================= SLIDE 1: CAPA ================= -->
+        <div class="slide slide-cover active" id="slide-1">
+            <div class="ufmg-logo">
+                <i class="fas fa-university"></i>
+            </div>
+            <h1>Política Atual de Educação Especial<br>na Perspectiva Inclusiva</h1>
+            <h2>Seminário Acadêmico - ICA / UFMG</h2>
+            
+            <div class="cover-details">
+                <p><strong>Disciplina:</strong> Política e Legislação Educacional</p>
+                <p><strong>Professor:</strong> Dr. João Marcos Vitorino</p>
+                <p><strong>Integrantes:</strong> Emilly Santos, Lara Bianca, Thalita Lorrany, Brener Serafim, Nikolas Souza</p>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 2: EMILLY - FUNDAMENTOS 1 ================= -->
+        <div class="slide" id="slide-2">
+            <div class="top-tracker">
+                <span class="active-track">1. Fundamentos</span> • 
+                <span>2. Embate</span> • 
+                <span>3. Histórico</span> • 
+                <span>4. Jurídico</span> • 
+                <span>5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Trajetória e Fundamentos</span>
+                Paradigmas Históricos da Educação Especial
+            </h2>
+
+            <div class="timeline-container">
+                <div class="timeline-step">
+                    <div class="timeline-icon"><i class="fas fa-user-times"></i></div>
+                    <div class="timeline-content" style="border-top: 4px solid var(--red-alert)">
+                        <h3 style="color: var(--red-alert)">Segregação</h3>
+                        <ul>
+                            <li>O foco é a <strong>exclusão</strong>.</li>
+                            <li>Atendimento restrito a asilos e instituições isoladas.</li>
+                            <li>Ausência de convivência social.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+                    <div class="timeline-content" style="border-top: 4px solid #F39C12">
+                        <h3 style="color: #F39C12">Integração</h3>
+                        <ul>
+                            <li>O aluno entra na escola regular.</li>
+                            <li>A responsabilidade de "se adaptar" é <strong>exclusivamente dele</strong>.</li>
+                            <li>Sistema inalterado.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-icon"><i class="fas fa-users"></i></div>
+                    <div class="timeline-content" style="border-top: 4px solid var(--green-success)">
+                        <h3 style="color: var(--green-success)">Inclusão</h3>
+                        <ul>
+                            <li><strong>A escola se transforma.</strong></li>
+                            <li>Acolhimento da diversidade como valor central.</li>
+                            <li>Direito inalienável de todos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span class="citation">Fonte: Adaptado de Baptista (2019)</span>
+                <span class="speaker-tag">Apresentação: Emilly Santos</span>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 3: EMILLY - FUNDAMENTOS 2 ================= -->
+        <div class="slide" id="slide-3">
+            <div class="top-tracker">
+                <span class="active-track">1. Fundamentos</span> • 
+                <span>2. Embate</span> • 
+                <span>3. Histórico</span> • 
+                <span>4. Jurídico</span> • 
+                <span>5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Transição Histórica</span>
+                Do Assistencialismo ao Direito Estruturado
+            </h2>
+
+            <div class="tiles-grid">
+                <div class="tile assistencial">
+                    <h3 style="color: var(--text-gray)"><i class="fas fa-hand-holding-heart"></i> Lógica Assistencialista</h3>
+                    <ul>
+                        <li><i class="fas fa-times-circle"></i> Baseada em modelos de caridade e filantropia.</li>
+                        <li><i class="fas fa-building"></i> Forte dependência de instituições privadas especializadas.</li>
+                        <li><i class="fas fa-eye-slash"></i> Visão social do sujeito considerado "incapaz".</li>
+                    </ul>
+                </div>
+                
+                <div class="tile direito">
+                    <h3 style="color: var(--green-success)"><i class="fas fa-balance-scale"></i> Política de Estado</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Educação consolidada como <strong>dever imperativo</strong> do Estado.</li>
+                        <li><i class="fas fa-cogs"></i> Assunção da responsabilidade técnica e financeira pública.</li>
+                        <li><i class="fas fa-school"></i> Foco irrestrito no acesso e permanência no <strong>ensino comum e regular</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span class="citation">Marco: PNEEPEI (2008)</span>
+                <div class="transition-hook">Próximo: Lara Bianca <i class="fas fa-arrow-right"></i></div>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 4: LARA - EMBATE 1 ================= -->
+        <div class="slide" id="slide-4">
+            <div class="top-tracker">
+                <span>1. Fundamentos</span> • 
+                <span class="active-track">2. Embate</span> • 
+                <span>3. Histórico</span> • 
+                <span>4. Jurídico</span> • 
+                <span>5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>O Grande Embate</span>
+                Contexto e Relevância do Debate
+            </h2>
+
+            <div class="tiles-grid" style="height: auto; margin-top: 40px;">
+                <div class="tile assistencial" style="padding: 30px; border-top-color: var(--primary-blue);">
+                    <h3 style="color: var(--primary-blue); font-size: 22px; margin-bottom: 20px;"><i class="fas fa-book-open"></i> Introdução</h3>
+                    <ul style="font-size: 18px;">
+                        <li><i class="fas fa-check" style="color: var(--accent-blue);"></i> Inclusão: direito garantido</li>
+                        <li><i class="fas fa-check" style="color: var(--accent-blue);"></i> Debate: escolas especiais × inclusão</li>
+                        <li><i class="fas fa-check" style="color: var(--accent-blue);"></i> Diferentes formas de atendimento</li>
+                        <li><i class="fas fa-check" style="color: var(--accent-blue);"></i> Educação, sociedade e direitos humanos</li>
+                    </ul>
+                </div>
+                
+                <div class="tile direito" style="padding: 30px; border-top-color: var(--accent-blue);">
+                    <h3 style="color: var(--accent-blue); font-size: 22px; margin-bottom: 20px;"><i class="fas fa-exclamation-circle"></i> Por que esse debate importa?</h3>
+                    <ul style="font-size: 18px;">
+                        <li><i class="fas fa-arrow-right" style="color: var(--primary-blue);"></i> Apoio especializado</li>
+                        <li><i class="fas fa-arrow-right" style="color: var(--primary-blue);"></i> Participação e convivência</li>
+                        <li><i class="fas fa-arrow-right" style="color: var(--primary-blue);"></i> Igualdade de oportunidades</li>
+                        <li><i class="fas fa-arrow-right" style="color: var(--primary-blue);"></i> Cidadania e direitos humanos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span class="citation">Análise do Grupo</span>
+                <span class="speaker-tag">Apresentação: Lara Bianca</span>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 5: LARA - EMBATE 2 ================= -->
+        <div class="slide" id="slide-5">
+            <div class="top-tracker">
+                <span>1. Fundamentos</span> • 
+                <span class="active-track">2. Embate</span> • 
+                <span>3. Histórico</span> • 
+                <span>4. Jurídico</span> • 
+                <span>5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Perspectivas Divergentes</span>
+                Escolas Especiais vs. Educação Inclusiva
+            </h2>
+
+            <div class="col-3-grid" style="gap: 20px; margin-top: 10px;">
+                <div class="card" style="padding: 25px 20px; text-align: left; border-top: 5px solid #F39C12;">
+                    <h4 style="font-size: 18px; color: #F39C12; margin-bottom: 15px;"><i class="fas fa-building" style="margin-right: 8px;"></i> Defesa das Escolas Especiais</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 15px; color: var(--text-dark); line-height: 1.6;">
+                        <li>• Atendimento especializado</li>
+                        <li>• Recursos específicos</li>
+                        <li>• Acompanhamento individualizado</li>
+                        <li>• Limitações da escola regular</li>
+                        <li>• <strong>Lucelmo Lacerda</strong></li>
+                        <li>• Recursos e profissionais especializados</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="padding: 25px 20px; text-align: left; border-top: 5px solid var(--green-success);">
+                    <h4 style="font-size: 18px; color: var(--green-success); margin-bottom: 15px;"><i class="fas fa-users" style="margin-right: 8px;"></i> Defesa da Educação Inclusiva</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 15px; color: var(--text-dark); line-height: 1.6;">
+                        <li>• Escola para todos</li>
+                        <li>• Convivência com as diferenças</li>
+                        <li>• Aprender juntos</li>
+                        <li>• <strong>Maria Teresa Mantoan</strong></li>
+                        <li>• <em>Inclusão Escolar: O que é? Por quê? Como Fazer? (2015)</em></li>
+                    </ul>
+                </div>
+
+                <div class="card" style="padding: 25px 20px; text-align: left; border-top: 5px solid var(--primary-blue);">
+                    <h4 style="font-size: 18px; color: var(--primary-blue); margin-bottom: 15px;"><i class="fas fa-flag-checkered" style="margin-right: 8px;"></i> Conclusão</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 15px; color: var(--text-dark); line-height: 1.6;">
+                        <li>• Conquista de direitos</li>
+                        <li>• Acesso à escola comum</li>
+                        <li>• Inclusão como direito humano</li>
+                        <li>• PNEEPEI (2008)</li>
+                        <li>• Avanços e desafios</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span class="citation">Análise do Grupo</span>
+                <div class="transition-hook">Próximo: Thalita Lorrany <i class="fas fa-arrow-right"></i></div>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 6: THALITA - HISTÓRICO 1 ================= -->
+        <div class="slide" id="slide-6">
+            <div class="top-tracker">
+                <span>1. Fundamentos</span> • 
+                <span>2. Embate</span> • 
+                <span class="active-track">3. Histórico</span> • 
+                <span>4. Jurídico</span> • 
+                <span>5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Marco Histórico</span>
+                A Base de Tudo: O Impacto Real da PNEEPEI (2008)
+            </h2>
+
+            <div class="col-3-grid">
+                <div class="card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h4>Inversão de Lógica</h4>
+                    <p>Inclusão deixa de ser opção e passa a ser <strong>direito público subjetivo</strong>.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Explosão de Matrículas</h4>
+                    <p>Alunos com deficiência, TGD e altas habilidades massivamente matriculados na <strong>rede regular</strong> de ensino.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4>AEE Institucionalizado</h4>
+                    <p>Estado torna-se responsável por <strong>salas de recursos multifuncionais</strong> e formação docente continuada.</p>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span class="citation">Baseado em: Baptista, 2019 (A Base de Tudo)</span>
+                <span class="speaker-tag">Apresentação: Thalita Lorrany</span>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 7: THALITA - HISTÓRICO 2 ================= -->
+        <div class="slide" id="slide-7">
+            <div class="top-tracker">
+                <span>1. Fundamentos</span> • 
+                <span>2. Embate</span> • 
+                <span class="active-track">3. Histórico</span> • 
+                <span>4. Jurídico</span> • 
+                <span>5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Tensões e Desafios</span>
+                Financiamento, Infraestrutura e Ameaças de Retrocesso
+            </h2>
+
+            <div class="dashboard-grid">
+                <!-- Coluna de Status -->
+                <div class="dash-side">
+                    <div class="stat-box avanco">
+                        <i class="fas fa-check" style="color: var(--green-success)"></i>
+                        <div><strong>AVANÇOS:</strong> AEE Institucionalizado, Matrículas em Expansão, Direito Garantido.</div>
+                    </div>
+                    <div class="stat-box ameaca">
+                        <i class="fas fa-coins" style="color: var(--red-alert)"></i>
+                        <div><strong>DESAFIOS:</strong> Financiamento Insuficiente.</div>
+                    </div>
+                    <div class="stat-box ameaca">
+                        <i class="fas fa-user-slash" style="color: var(--red-alert)"></i>
+                        <div><strong>DESAFIOS:</strong> Falta de Profissionais.</div>
+                    </div>
+                    <div class="stat-box ameaca">
+                        <i class="fas fa-file-signature" style="color: var(--red-alert)"></i>
+                        <div><strong>AMEAÇA:</strong> Decreto 10.502/2020 (Tentativa de Segregação).</div>
+                    </div>
+                </div>
+
+                <!-- Coluna Principal (Schabbach) -->
+                <div class="dash-main">
+                    <h3>A Distância entre Política e Implementação</h3>
+                    <p style="margin-bottom: 20px; font-weight: 600;">Segundo Schabbach (2021): há um abismo entre a fórmula da política e sua implementação real.</p>
+                    
+                    <ul class="dash-list">
+                        <li>Financiamento fragmentado e insuficiente.</li>
+                        <li>Escolas sem acessibilidade estrutural adequada.</li>
+                        <li>Gargalo histórico na formação e remuneração docente.</li>
+                        <li><strong>Decreto 10.502/2020:</strong> Tentativa de reabrir brechas para segregação em escolas especiais (campo em constante disputa ideológica - Baptista).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span class="citation">Baseado em: Schabbach (2021) e Baptista (2019)</span>
+                <div class="transition-hook">Próximo: Brener Serafim <i class="fas fa-arrow-right"></i></div>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 8: BRENER - JURÍDICO 1 ================= -->
+        <div class="slide" id="slide-8">
+            <div class="top-tracker">
+                <span>1. Fundamentos</span> • 
+                <span>2. Embate</span> • 
+                <span>3. Histórico</span> • 
+                <span class="active-track">4. Jurídico</span> • 
+                <span>5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Cenário Jurídico: A Virada de Chave</span>
+                Comparativo Estrutural: 2008 vs. Atualidade (2026)
+            </h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Eixo Analítico</th>
+                        <th style="width: 37.5%; background-color: #2c3e50;">PNEEPEI (2008) - O Alicerce</th>
+                        <th style="width: 37.5%; background-color: #1a5276;">Decreto 12.686 (Atual/2026) - O Sistema</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag base">Exigência Diagnóstica</span></td>
+                        <td>A oferta do AEE e recursos era engessada, atrelada fortemente à necessidade de um <strong>laudo médico formal</strong>.</td>
+                        <td>Inovação holística: Apoio baseado no <strong>"Estudo de Caso"</strong> pedagógico. A escola age na barreira sem depender do laudo.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag retro">Instituições Especializadas</span></td>
+                        <td>Tensão: O texto induzia o fim gradual do financiamento público para escolas exclusivas (ex: APAEs).</td>
+                        <td>Pacificação e Realismo: Prevê apoio técnico e financeiro do Estado a instituições privadas sem fins lucrativos parceiras.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag nova">Governança e Estrutura</span></td>
+                        <td>Diretrizes repassadas de forma isolada do MEC para Estados/Municípios, gerando gargalos operacionais.</td>
+                        <td>Cria a <strong>Rede Nacional</strong>: Ecossistema integrado cruzando dados do MEC, Saúde e Direitos Humanos (ex: rastreio de BPC).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="slide-footer">
+                <span class="citation">Análise Legislativa Comparada</span>
+                <span class="speaker-tag">Apresentação: Brener Serafim</span>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 9: BRENER - JURÍDICO 2 ================= -->
+        <div class="slide" id="slide-9">
+            <div class="top-tracker">
+                <span>1. Fundamentos</span> • 
+                <span>2. Embate</span> • 
+                <span>3. Histórico</span> • 
+                <span class="active-track">4. Jurídico</span> • 
+                <span>5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Implicações Práticas</span>
+                AEE e a Complexidade da Gestão Escolar
+            </h2>
+
+            <div class="tiles-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                <div class="tile" style="padding: 20px;">
+                    <h3 style="font-size: 18px; color: var(--accent-blue);"><i class="fas fa-sitemap"></i> Estruturação do AEE</h3>
+                    <p style="font-size: 14px;">O Atendimento Educacional Especializado passa a exigir infraestrutura de ponta, não sendo mais um "puxadinho" pedagógico. O gestor deve articular horários de contraturno sem sobrecarregar o aluno.</p>
+                </div>
+                
+                <div class="tile" style="padding: 20px;">
+                    <h3 style="font-size: 18px; color: var(--accent-blue);"><i class="fas fa-book-reader"></i> Formação Continuada</h3>
+                    <p style="font-size: 14px;">A legislação exige que a escola seja um espaço formativo. O professor da sala regular precisa dialogar com o professor do AEE, demandando tempo e recursos geridos pela direção.</p>
+                </div>
+
+                <div class="tile" style="padding: 20px;">
+                    <h3 style="font-size: 18px; color: var(--accent-blue);"><i class="fas fa-handshake"></i> Articulação em Rede</h3>
+                    <p style="font-size: 14px;">A gestão escolar deve conectar a escola às redes de saúde (fonoaudiologia, psicologia) e assistência social, materializando a "perspectiva inclusiva" holística proposta nos novos decretos.</p>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span class="citation">Análise Gestão Educacional</span>
+                <div class="transition-hook">Próximo: Nikolas Souza <i class="fas fa-arrow-right"></i></div>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 10: NIKOLAS - HOLÍSTICA 1 ================= -->
+        <div class="slide" id="slide-10">
+            <div class="top-tracker">
+                <span>1. Fundamentos</span> • 
+                <span>2. Embate</span> • 
+                <span>3. Histórico</span> • 
+                <span>4. Jurídico</span> • 
+                <span class="active-track">5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Visão Holística e Desafios Docentes</span>
+                O Abismo entre Lei e Realidade (Schabbach & Rosa)
+            </h2>
+
+            <ul class="bullet-list-large">
+                <li>
+                    <i class="fas fa-road"></i>
+                    <div>
+                        <strong>O Documento vs. O Chão da Escola:</strong> Leis avançadas (Finlândia) enfrentando realidades estruturais precárias (Brasil). A inclusão na letra da lei não garante o aprendizado real.
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-brain"></i>
+                    <div>
+                        <strong>Acessibilidade Atitudinal:</strong> O maior desafio não é construir rampas (físico), mas desconstruir preconceitos velados e o esgotamento (burnout) da equipe escolar desassistida.
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-layer-group"></i>
+                    <div>
+                        <strong>Terceirização da Responsabilidade:</strong> Tendência sistêmica de culpar o professor da sala regular, ignorando a falta de equipe multidisciplinar de apoio.
+                    </div>
+                </li>
+            </ul>
+
+            <div class="slide-footer">
+                <span class="citation">Referência: Schabbach & Rosa, 2021</span>
+                <span class="speaker-tag">Apresentação: Nikolas Souza</span>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 11: NIKOLAS - CONCLUSÃO ================= -->
+        <div class="slide" id="slide-11">
+            <div class="top-tracker">
+                <span>1. Fundamentos</span> • 
+                <span>2. Embate</span> • 
+                <span>3. Histórico</span> • 
+                <span>4. Jurídico</span> • 
+                <span class="active-track">5. Visão Holística</span>
+            </div>
+            
+            <h2 class="action-title">
+                <span>Síntese Final</span>
+                Conclusão e Provocações para o Debate
+            </h2>
+
+            <div class="conclusion-box">
+                "A Educação Inclusiva não é um ponto de chegada legislativo, mas um <strong>processo social inegociável</strong>, contínuo e que exige financiamento robusto para sair do papel."
+            </div>
+
+            <div class="questions-container">
+                <div class="question-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h4>1. A estrutura escolar atual está verdadeiramente preparada para <strong>incluir</strong>, ou estamos apenas <strong>recebendo</strong> (integrando) os alunos em espaços precários?</h4>
+                </div>
+                
+                <div class="question-card">
+                    <i class="fas fa-search-dollar"></i>
+                    <h4>2. Como garantir que os recursos públicos cheguem de fato à <strong>sala de aula e à capacitação docente</strong>, evitando que a inclusão seja apenas uma política de fachada?</h4>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span class="citation">Reflexão Coletiva do Grupo</span>
+                <div class="transition-hook">Próximo: Referências <i class="fas fa-arrow-right"></i></div>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 12: REFERÊNCIAS ================= -->
+        <div class="slide" id="slide-12">
+            <h2 class="action-title">
+                <span>Normas ABNT</span>
+                Referências Bibliográficas e Legais
+            </h2>
+
+            <ul class="abnt-list">
+                <li><strong>BAPTISTA, C. R.</strong> Política pública, Educação Especial e escolarização no Brasil. <em>Educação e Pesquisa</em>, São Paulo, v. 45, e217423, 2019. Disponível em: https://doi.org/10.1590/S1678-4634201945217423.</li>
+                
+                <li><strong>BRASIL.</strong> <em>Decreto nº 10.502, de 30 de setembro de 2020</em>. Institui a Política Nacional de Educação Especial: Equitativa, Inclusiva e com Aprendizado ao Longo da Vida. Diário Oficial da União, Brasília, DF, 1 out. 2020. (Revogado).</li>
+                
+                <li><strong>BRASIL.</strong> <em>Decreto nº 12.686, de 20 de outubro de 2025</em>. Diário Oficial da União, Brasília, DF. Disponível em: https://www2.camara.leg.br/legin/fed/decret/2025/decreto-12686-20-outubro-2025-798166-publicacaooriginal-176779-pe.html.</li>
+
+                <li><strong>MINISTÉRIO DA EDUCAÇÃO (MEC).</strong> <em>Política Nacional de Educação Especial na Perspectiva da Educação Inclusiva (PNEEPEI)</em>. Brasília: MEC/SEESP, 2008.</li>
+                
+                <li><strong>SCHABBACH, L. M.; ROSA, J. G. L.</strong> Segregar ou incluir? Coalizões de defesa, ideias e mudanças na educação especial do Brasil. <em>Revista de Administração Pública</em>, Rio de Janeiro, v. 55, n. 6, p. 1290-1313, nov./dez. 2021. Disponível em: https://doi.org/10.1590/0034-761220210034.</li>
+            </ul>
+
+            <div class="slide-footer" style="justify-content: center; margin-top: 50px;">
+                <div class="ufmg-logo" style="color: var(--primary-blue); font-size: 32px;">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div style="margin-left: 15px; font-weight: 600; color: var(--primary-blue);">Obrigado pela atenção!</div>
+            </div>
+        </div>
+
+        <!-- Controles de Navegação -->
+        <div class="nav-controls">
+            <button class="nav-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="slide-counter" id="counter">1 / 12</div>
+
+    </div>
+
+    <!-- Script de Navegação -->
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const counter = document.getElementById('counter');
+
+        function showSlide(index) {
+            // Garantir limites
+            if (index < 0) currentSlideIndex = 0;
+            else if (index >= slides.length) currentSlideIndex = slides.length - 1;
+            else currentSlideIndex = index;
+
+            // Atualizar classes
+            slides.forEach((slide, i) => {
+                if (i === currentSlideIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Atualizar contador
+            counter.innerText = `${currentSlideIndex + 1} / ${slides.length}`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlideIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlideIndex - 1);
+        }
+
+        // Suporte a teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Setup inicial
+        showSlide(0);
+    </script>
+</body>
+</html>
